@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="FileHelperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-29T14:52:45" hostname="LAPTOP-HQ82GS0B" time="0.039">
+  <properties/>
+  <testcase name="test()" classname="FileHelperTest" time="0.039"/>
+  <system-out><![CDATA[Hello World!
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
