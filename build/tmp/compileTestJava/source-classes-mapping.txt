@@ -1,2 +1,8 @@
 FileHelperTest.java
  FileHelperTest
+DictionaryHelperTest.java
+ DictionaryHelperTest
+TokenizerTest.java
+ TokenizerTest
+DictionaryPipelineTest.java
+ DictionaryPipelineTest
