@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SentenceHelperTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-02T12:38:24" hostname="LAPTOP-HQ82GS0B" time="1.602">
+  <properties/>
+  <testcase name="getSentence()" classname="SentenceHelperTest" time="1.602"/>
+  <system-out><![CDATA[[[{"start":0,"end":0,"id":9998,"name":"[sos]"},{"start":0,"end":0,"id":7,"name":"a"},{"start":2,"end":4,"id":4128,"name":"boy"},{"start":6,"end":8,"id":52,"name":"can"},{"start":10,"end":11,"id":51,"name":"do"},{"start":13,"end":22,"id":4715,"name":"everything"},{"start":24,"end":26,"id":10000,"name":"for"},{"start":28,"end":32,"id":9996,"name":"girl!"},{"start":0,"end":0,"id":9999,"name":"[eos]"}],[{"start":0,"end":0,"id":9998,"name":"[sos]"},{"start":34,"end":35,"id":53,"name":"he"},{"start":37,"end":38,"id":10000,"name":"is"},{"start":40,"end":43,"id":516,"name":"just"},{"start":45,"end":52,"id":9996,"name":"kidding."},{"start":0,"end":0,"id":9999,"name":"[eos]"}]]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -9,15 +9,19 @@ SquadModel.java
  SquadModel$Data$Paragraph$Qa$PlausibleAnswer
 FileHelper.java
  FileHelper
-DictionaryHelper.java
- DictionaryHelper
- DictionaryHelper$1
 DictionaryModel.java
  DictionaryModel
  DictionaryModel$Data
-DictionaryPipeline.java
- DictionaryPipeline
+DictionaryHelper.java
+ DictionaryHelper
+ DictionaryHelper$1
 TokenModel.java
  TokenModel
-Tokenizer.java
- Tokenizer
+TokenHelper.java
+ TokenHelper
+SentenceHelper.java
+ SentenceHelper
+SquadTester.java
+ SquadTester
+DictionaryPipeline.java
+ DictionaryPipeline

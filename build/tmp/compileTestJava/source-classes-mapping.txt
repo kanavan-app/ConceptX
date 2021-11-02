@@ -1,8 +1,8 @@
-FileHelperTest.java
- FileHelperTest
-DictionaryHelperTest.java
- DictionaryHelperTest
-TokenizerTest.java
- TokenizerTest
 DictionaryPipelineTest.java
  DictionaryPipelineTest
+TokenHelperTest.java
+ TokenHelperTest
+SquadTesterTest.java
+ SquadTesterTest
+SentenceHelperTest.java
+ SentenceHelperTest

@@ -28,25 +28,21 @@ public final class TokenHelper {
     public TokenModel[] getTokens(final String text) {
         final List<TokenModel> result = new ArrayList<>();
         final List<Integer> codePoints = getCodePoints(normalize(text));
+        boolean isSpace = true;
         for (int i = 0; i < codePoints.size(); i++) {
             if (!Character.isWhitespace(codePoints.get(i))) {
-                if (i + 1 == codePoints.size() || (i + 1 < codePoints.size() && Character.isWhitespace(codePoints.get(i + 1)))) {
-                    final TokenModel tokenModel = result.get(result.size() - 1);
-                    tokenModel.end = i;
-                    tokenModel.name += Character.toString(codePoints.get(i));
-                    tokenModel.id = DictionaryHelper.getInstance().getId(tokenModel.name);
-                    result.set(result.size() - 1, tokenModel);
-                } else if (i == 0 || (i - 1 > 0 && Character.isWhitespace(codePoints.get(i - 1)))) {
+                if (isSpace) {
                     final TokenModel tokenModel = new TokenModel();
                     tokenModel.start = i;
-                    tokenModel.name = Character.toString(codePoints.get(i));
                     result.add(tokenModel);
-                } else {
-                    final TokenModel tokenModel = result.get(result.size() - 1);
-                    tokenModel.name += Character.toString(codePoints.get(i));
-                    result.set(result.size() - 1, tokenModel);
                 }
+                TokenModel tokenModel = result.get(result.size() - 1);
+                tokenModel.end = i;
+                tokenModel.name = tokenModel.name == null ? Character.toString(codePoints.get(i)) : tokenModel.name + Character.toString(codePoints.get(i));
+                tokenModel.id = DictionaryHelper.getInstance().getId(tokenModel.name);
+                result.set(result.size() - 1, tokenModel);
             }
+            isSpace = Character.isWhitespace(codePoints.get(i));
         }
         return result.toArray(new TokenModel[0]);
     }
@@ -54,14 +50,17 @@ public final class TokenHelper {
     public TokenModel[][] getSentences(final String text) {
         final List<List<TokenModel>> result = new ArrayList<>();
         final TokenModel[] tokens = getTokens(text);
-        for (int i = 0; i < tokens.length; i++) {
-            if (result.size() == 0) {
+        boolean isFullStop = false;
+        boolean isExclamationMark = false;
+        boolean isQuestionMark = false;
+        for (final TokenModel token : tokens) {
+            if (result.size() == 0 || isExclamationMark || isQuestionMark || (isFullStop && token.id != DictionaryHelper.getInstance().getId(Config.UNK_TOKEN))) {
                 result.add(new ArrayList<>());
             }
-            result.get(result.size() - 1).add(tokens[i]);
-            if (tokens[i].name.contains("!") || tokens[i].name.contains("?") || (tokens[i].name.contains(".") && i + 1 < tokens.length && tokens[i + 1].id != DictionaryHelper.getInstance().getId(Config.UNK_TOKEN))) {
-                result.add(new ArrayList<>());
-            }
+            result.get(result.size() - 1).add(token);
+            isFullStop = token.name.contains(".");
+            isExclamationMark = token.name.contains("!");
+            isQuestionMark = token.name.contains("?");
         }
         return toArray(result);
     }

@@ -21,13 +21,15 @@ public final class DictionaryHelper {
 
     public void load() {
         final DictionaryModel dictionaryModel = FileHelper.getInstance().read(file, DictionaryModel.class);
-        for (int i = 0; i < Config.MAXIMUM_TOKEN_ID - 3; i++) {
-            idMap.put(dictionaryModel.data[i].name, dictionaryModel.data[i].id);
+        for (int i = 0; i < Config.MAXIMUM_TOKEN_ID - 5; i++) {
+            id++;
+            idMap.put(dictionaryModel.data[i].name, id);
         }
-        idMap.put(Config.UNK_TOKEN, Config.MAXIMUM_TOKEN_ID - 3);
-        idMap.put(Config.PAD_TOKEN, Config.MAXIMUM_TOKEN_ID - 2);
-        idMap.put(Config.SOS_TOKEN, Config.MAXIMUM_TOKEN_ID - 1);
-        idMap.put(Config.EOS_TOKEN, Config.MAXIMUM_TOKEN_ID);
+        idMap.put(Config.UNK_TOKEN, Config.MAXIMUM_TOKEN_ID - 4);
+        idMap.put(Config.PAD_TOKEN, Config.MAXIMUM_TOKEN_ID - 3);
+        idMap.put(Config.SOS_TOKEN, Config.MAXIMUM_TOKEN_ID - 2);
+        idMap.put(Config.EOS_TOKEN, Config.MAXIMUM_TOKEN_ID - 1);
+        idMap.put(Config.MASK_TOKEN, Config.MAXIMUM_TOKEN_ID);
     }
 
     private void sort(final DictionaryModel.Data[] data) {
